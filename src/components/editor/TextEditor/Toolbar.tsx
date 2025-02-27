@@ -28,7 +28,7 @@ interface ToolbarProps {
 
 const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
   return (
-    <div className=" border-2  rounded-md h-11 absolute bottom-2 p-1 flex gap-2">
+    <div className=" border-2 rounded-md h-11 absolute bottom-2 p-1 flex gap-2">
 
         <CustomDropdownMenu>
             <CustomDropdownTrigger>
@@ -38,7 +38,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
                 </div>
             </CustomDropdownTrigger>
             <CustomDropdownContent>
-                <CustomDropDownMenuItem className=" text-3xl font-bold leading-none" onClick={()=>{
+                <CustomDropDownMenuItem className=" text-3xl font-bold " onClick={()=>{
                     editor.chain().focus().setHeading({level:1}).run()
                 }}>
                     Heading 1
@@ -46,7 +46,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
                 <CustomDropDownMenuItem className=" text-xl font-semibold" onClick={()=>{
                     editor.chain().focus().setHeading({level:2}).run()
                 }}>
-                    Heading 2
+                    Heading 2 
                 </CustomDropDownMenuItem>
                 <CustomDropDownMenuItem className=" text-lg font-medium" onClick={()=>{
                     editor.chain().focus().setHeading({level:3}).run()
@@ -63,7 +63,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
             </CustomDropdownContent>
         </CustomDropdownMenu>
 
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className=" bg-foreground/40" />
       <div className=" flex gap-1">
         <button
           className={clsx("h-full hover:bg-secondary  rounded-md p-1 flex", {
@@ -93,7 +93,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
           <Underline className=" w-6 h-5 m-auto " />
         </button>
       </div>
-      <Separator orientation="vertical" />
+      <Separator orientation="vertical" className=" bg-foreground/40" />
       <div className=" flex gap-1">
       <CustomDropdownMenu>
             <CustomDropdownTrigger>
@@ -123,7 +123,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
         </CustomDropdownMenu>
 
         <button
-          className={clsx(" h-full hover:bg-secondary p-1 rounded-md flex", {
+          className={clsx(" h-full hover:bg-secondary  p-1 rounded-md flex", {
             "bg-secondary": editor?.isActive("codeBlock"),
           })}
           onClick={() => editor?.chain().focus().toggleCodeBlock().run()}

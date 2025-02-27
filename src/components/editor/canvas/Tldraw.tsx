@@ -12,6 +12,7 @@ import "@tldraw/tldraw/tldraw.css";
 import { useLayoutEffect, useMemo, useState } from "react";
 
 DefaultColorThemePalette.lightMode.background = "aqua";
+
 export default function () {
   const [editor, setEditor] = useState<Editor | null>(null);
   const store = useMemo(() => createTLStore(), []);
@@ -53,7 +54,7 @@ export default function () {
     };
   }, [store]);
   return (
-    <div style={{ position: "fixed", inset: 0 }}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Tldraw
         inferDarkMode
         options={{ maxPages: 1 }}

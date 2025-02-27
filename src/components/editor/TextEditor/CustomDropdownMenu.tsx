@@ -37,7 +37,7 @@ export const CustomDropdownTrigger = ({ children, }:{children:React.ReactNode}) 
     const context =useContext(DropdownContext)
     if(!context) throw new Error("CustomDropdownMenu must be used within a CustomDropdownMenuProvider")
   return (
-    <button onClick={()=>context.setOpen((prev)=>!prev)} className='p-1 hover:bg-secondary rounded-md' >
+    <button onClick={()=>context.setOpen((prev)=>!prev)} className='p-1 hover:bg-foreground/10 rounded-md' >
       {children}
     </button>
   )
