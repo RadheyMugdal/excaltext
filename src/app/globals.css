@@ -32,6 +32,14 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -59,6 +67,14 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -118,7 +134,6 @@
     --chart-5: 340 75% 55%;
   }
 }
-
 
 .tiptap ul,
 ol {
@@ -202,47 +217,46 @@ p {
 }
 
 .tl-theme__dark {
-	--color-accent: hsl(0, 76%, 60%);
-	--color-background: hsl(240, 5%, 6.5%);
-	--color-brush-fill: hsl(0, 0%, 71%, 5.1%);
-	--color-brush-stroke: hsl(0, 0%, 71%, 25.1%);
-	--color-grid: hsl(0, 0%, 40%);
-	--color-low: hsl(260, 4.5%, 10.5%);
-	--color-low-border: hsl(207, 10%, 10%);
-	--color-culled: hsl(210, 11%, 19%);
-	--color-muted-none: hsl(0, 0%, 100%, 0%);
-	--color-muted-0: hsl(0, 0%, 100%, 2%);
-	--color-muted-1: hsl(0, 0%, 100%, 10%);
-	--color-muted-2: hsl(0, 0%, 100%, 5%);
-	--color-hint: hsl(0, 0%, 100%, 7%);
-	--color-overlay: hsl(0, 0%, 0%, 50%);
-	--color-divider: hsl(240, 9%, 22%);
-	--color-panel-contrast: hsl(245, 12%, 23%);
-	--color-panel: var(--secondary) !important;
-	--color-panel-overlay: hsl(210, 10%, 24%, 82%);
-	--color-focus: hsl(217, 76%, 80%);
-	--color-selected: #1a1a1c !important;
-	--color-selected-contrast: hsl(0, 0%, 100%);
-	--color-selection-fill: hsl(209, 100%, 57%, 20%);
-	--color-selection-stroke: hsl(214, 84%, 56%);
-	--color-text-0: hsl(0, 9%, 94%);
-	--color-text-1: hsl(0, 0%, 85%);
-	--color-text-3: hsl(210, 6%, 45%);
-	--color-text-shadow: hsl(210, 13%, 18%);
-	--color-primary: hsl(214, 84%, 56%);
-	--color-success: hsl(123, 38%, 57%);
-	--color-info: hsl(199, 92%, 56%);
-	--color-warning: hsl(36, 100%, 57%);
-	--color-error: hsl(4, 90%, 58%);
-	--color-warn: hsl(0, 81%, 66%);
-	--color-text: hsl(210, 17%, 98%);
-	--color-laser: hsl(0, 100%, 50%);
-	/* Shadows */
-	--shadow-1: 0px 1px 2px hsl(0, 0%, 0%, 16.1%), 0px 1px 3px hsl(0, 0%, 0%, 22%),
-		inset 0px 0px 0px 1px var(--color-panel-contrast);
-	--shadow-2: 0px 1px 3px hsl(0, 0%, 0%, 66.6%), 0px 2px 6px hsl(0, 0%, 0%, 33%),
-		inset 0px 0px 0px 1px var(--color-panel-contrast);
-	--shadow-3: 0px 1px 3px hsl(0, 0%, 0%, 50%), 0px 2px 12px hsl(0, 0%, 0%, 50%),
-		inset 0px 0px 0px 1px var(--color-panel-contrast);
+  --color-accent: hsl(0, 76%, 60%);
+  --color-background: hsl(240, 5%, 6.5%);
+  --color-brush-fill: hsl(0, 0%, 71%, 5.1%);
+  --color-brush-stroke: hsl(0, 0%, 71%, 25.1%);
+  --color-grid: hsl(0, 0%, 40%);
+  --color-low: hsl(260, 4.5%, 10.5%);
+  --color-low-border: hsl(207, 10%, 10%);
+  --color-culled: hsl(210, 11%, 19%);
+  --color-muted-none: hsl(0, 0%, 100%, 0%);
+  --color-muted-0: hsl(0, 0%, 100%, 2%);
+  --color-muted-1: hsl(0, 0%, 100%, 10%);
+  --color-muted-2: hsl(0, 0%, 100%, 5%);
+  --color-hint: hsl(0, 0%, 100%, 7%);
+  --color-overlay: hsl(0, 0%, 0%, 50%);
+  --color-divider: hsl(240, 9%, 22%);
+  --color-panel-contrast: hsl(245, 12%, 23%);
+  --color-panel: var(--secondary) !important;
+  --color-panel-overlay: hsl(210, 10%, 24%, 82%);
+  --color-focus: hsl(217, 76%, 80%);
+  --color-selected: #1a1a1c !important;
+  --color-selected-contrast: hsl(0, 0%, 100%);
+  --color-selection-fill: hsl(209, 100%, 57%, 20%);
+  --color-selection-stroke: hsl(214, 84%, 56%);
+  --color-text-0: hsl(0, 9%, 94%);
+  --color-text-1: hsl(0, 0%, 85%);
+  --color-text-3: hsl(210, 6%, 45%);
+  --color-text-shadow: hsl(210, 13%, 18%);
+  --color-primary: hsl(214, 84%, 56%);
+  --color-success: hsl(123, 38%, 57%);
+  --color-info: hsl(199, 92%, 56%);
+  --color-warning: hsl(36, 100%, 57%);
+  --color-error: hsl(4, 90%, 58%);
+  --color-warn: hsl(0, 81%, 66%);
+  --color-text: hsl(210, 17%, 98%);
+  --color-laser: hsl(0, 100%, 50%);
+  /* Shadows */
+  --shadow-1: 0px 1px 2px hsl(0, 0%, 0%, 16.1%), 0px 1px 3px hsl(0, 0%, 0%, 22%),
+    inset 0px 0px 0px 1px var(--color-panel-contrast);
+  --shadow-2: 0px 1px 3px hsl(0, 0%, 0%, 66.6%), 0px 2px 6px hsl(0, 0%, 0%, 33%),
+    inset 0px 0px 0px 1px var(--color-panel-contrast);
+  --shadow-3: 0px 1px 3px hsl(0, 0%, 0%, 50%), 0px 2px 12px hsl(0, 0%, 0%, 50%),
+    inset 0px 0px 0px 1px var(--color-panel-contrast);
 }
-
