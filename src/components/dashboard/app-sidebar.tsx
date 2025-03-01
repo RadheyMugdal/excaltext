@@ -64,7 +64,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
@@ -72,7 +72,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <div className=" w-full  rounded-md bg-background p-2 flex flex-col gap-3 ">
+        <div className=" w-full  rounded-md bg-secondary/50 border p-2 flex flex-col gap-3 ">
           <h1 className=" font-bold">Free trail</h1>
           <div className=" flex flex-col">
             <Progress value={33} className="" />
