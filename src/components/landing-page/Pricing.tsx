@@ -11,7 +11,7 @@ import { CircleCheck } from "lucide-react";
 
 export function Pricing() {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4" id="pricing">
       <div className="container mx-auto max-w-6xl">
         <h2 className="font-heading text-3xl md:text-4xl text-center mb-16">
           Pricing

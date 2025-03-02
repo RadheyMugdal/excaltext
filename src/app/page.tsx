@@ -4,6 +4,7 @@ import { Pricing } from "@/components/landing-page/Pricing";
 import { Button } from "@/components/ui/button";
 import { Brush, PenTool, Settings2, UsersRound } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -12,15 +13,24 @@ const page = () => {
       <header className=" flex justify-between p-4 items-center  border-b">
         <h1 className=" text-2xl">Excaltext</h1>
         <ul className=" flex gap-6">
-          <li className=" cursor-pointer text-foreground/70 hover:text-foreground">
+          <Link
+            href={"#home"}
+            className=" cursor-pointer text-foreground/70 hover:text-foreground"
+          >
             Home
-          </li>
-          <li className=" cursor-pointer text-foreground/70 hover:text-foreground">
+          </Link>
+          <Link
+            href={"#features"}
+            className=" cursor-pointer text-foreground/70 hover:text-foreground"
+          >
             Features
-          </li>
-          <li className=" cursor-pointer text-foreground/70 hover:text-foreground">
+          </Link>
+          <Link
+            href={"#pricing"}
+            className=" cursor-pointer text-foreground/70 hover:text-foreground"
+          >
             Pricing
-          </li>
+          </Link>
         </ul>
         <Button>Get started</Button>
       </header>

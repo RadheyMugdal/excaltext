@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   deleteFileDialogOpen,
 }) => {
   return (
-    <Card className=" h-fit" id={id}>
+    <Card className=" h-fit bg-secondary/50" id={id}>
       <CardHeader className=" px-6 py-4">
         <CardTitle className=" text-2xl  font-semibold">{name}</CardTitle>
         <CardDescription className=" text-sm text-muted-foreground">
@@ -47,9 +47,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </CardHeader>
       <CardContent>
         <div className=" w-full flex items-center gap-5">
-          <Button className=" flex-1  hover:bg-secondary" variant={"secondary"}>
+          <button className=" flex-1 p-2 bg-background rounded-md outline hover:bg-background/90 ">
             Open
-          </Button>
+          </button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className=" hover:bg-secondary  p-2 rounded-md">

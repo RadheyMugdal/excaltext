@@ -53,12 +53,12 @@ export default function Page() {
         </header>
         <div className=" flex-1 flex flex-col  py-2 px-6">
           <div className=" w-full flex items-center justify-between ">
-            <div className=" relative  bg-sidebar inline-block  focus-within:outline rounded-md overflow-hidden max-w-sm w-full ">
+            <div className=" relative  bg-secondary inline-block    rounded-md overflow-hidden max-w-sm w-full ">
               <Search className=" absolute top-1/2 -translate-y-1/2 left-2  w-4 h-4 " />
               <input
                 type="text"
                 placeholder="Search files "
-                className=" p-2 ml-6 w-[90%]  border-none outline-none bg-sidebar"
+                className=" p-2 ml-6 w-[90%] bg-secondary border-none outline-none "
               />
             </div>
             <Button onClick={() => setCreateNewFileDialogOpen(true)}>

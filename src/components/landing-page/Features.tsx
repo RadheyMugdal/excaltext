@@ -7,7 +7,7 @@ import {
 
 export function Features() {
   return (
-    <section className="py-20 px-4 bg-accent/5">
+    <section className="py-20 px-4 bg-accent/5" id="features">
       <div className="container mx-auto max-w-6xl">
         <h2 className="font-heading text-3xl md:text-4xl text-center mb-16">
           Powerful Features
