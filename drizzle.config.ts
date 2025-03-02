@@ -8,8 +8,6 @@ export default defineConfig({
   dbCredentials: {
     url: process.env.DATABASE_URL as string,
   },
-  verbose: true,
-  strict: true,
 });
 
 console.log(process.env.DATABASE_URL);

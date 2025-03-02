@@ -6,14 +6,13 @@ import {
   primaryKey,
   integer,
 } from "drizzle-orm/pg-core";
-import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
 import type { AdapterAccountType } from "next-auth/adapters";
 
-const connectionString = "postgres://postgres:postgres@localhost:5432/drizzle";
-const pool = postgres(connectionString, { max: 1 });
+const sql = neon(process.env.DATABASE_URL!);
 
-export const db = drizzle(pool);
+export const db = drizzle({ client: sql });
 
 export const users = pgTable("user", {
   id: text("id")
