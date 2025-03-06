@@ -9,5 +9,3 @@ export default defineConfig({
     url: process.env.DATABASE_URL as string,
   },
 });
-
-console.log(process.env.DATABASE_URL);

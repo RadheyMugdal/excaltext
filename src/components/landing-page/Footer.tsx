@@ -1,7 +1,5 @@
 import { Twitter, Github, Linkedin } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-
 export function Footer() {
   return (
     <footer className="   border-t border-2 ">

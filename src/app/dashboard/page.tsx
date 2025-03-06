@@ -1,11 +1,9 @@
 "use client";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
-import CreateProject from "@/components/dashboard/CreateProject";
 import CreateNewFileDialog from "@/components/dashboard/dialogs/CreateNewFileDialog";
 import DeleteFileDialog from "@/components/dashboard/dialogs/DeleteFileDialog";
 import RenameFileDialog from "@/components/dashboard/dialogs/RenameFileDialog";
 import ProjectCard from "@/components/dashboard/ProjectCard";
-import ProjectListSkeleton from "@/components/dashboard/skeletons/ProjectListSkeleton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,7 +21,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Search, Settings2 } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
 
 export default function Page() {

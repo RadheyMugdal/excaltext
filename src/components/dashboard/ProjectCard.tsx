@@ -3,18 +3,14 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "../ui/button";
 import { Pencil, Settings2, Trash2 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -32,10 +28,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   id,
   name,
   lastUpdated,
-  renameFileDialogOpen,
   setRenameFileDialogOpen,
   setDeleteFileDialogOpen,
-  deleteFileDialogOpen,
 }) => {
   return (
     <Card className=" h-fit bg-secondary/50" id={id}>

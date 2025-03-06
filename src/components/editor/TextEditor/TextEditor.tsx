@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent, FloatingMenu, Editor } from "@tiptap/react";
+import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 import Heading from "@tiptap/extension-heading";
@@ -12,13 +12,13 @@ import Paragraph from "@tiptap/extension-paragraph";
 import Toolbar from "./Toolbar";
 import CodeBlock from "@tiptap/extension-code-block";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import debounce  from "lodash.debounce";
+import debounce from "lodash.debounce";
 
 const TextEditor = () => {
-  const debouncedOnUpdate = debounce(({ editor }: { editor:any }) => {
-    const content =editor.getHTML();
+  const debouncedOnUpdate = debounce(({ editor }: { editor: any }) => {
+    const content = editor.getHTML();
     //store on db logic
-}, 2000);
+  }, 2000);
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -43,23 +43,22 @@ const TextEditor = () => {
         class: "focus:outline-none",
       },
     },
-    onUpdate:debouncedOnUpdate
+    onUpdate: debouncedOnUpdate,
   });
 
   return (
     <div className="w-full h-full flex justify-center p-4">
-    <div className="w-full max-w-xl h-[90%] flex flex-col  rounded-lg">
-      {/* Make this wrapper take full height and allow scrolling inside */}
-      <div className="flex-1 overflow-hidden relative">
-        <EditorContent
-          editor={editor}
-          className="absolute inset-0 overflow-auto p-4"
-        />
+      <div className="w-full max-w-xl h-[90%] flex flex-col  rounded-lg">
+        {/* Make this wrapper take full height and allow scrolling inside */}
+        <div className="flex-1 overflow-hidden relative">
+          <EditorContent
+            editor={editor}
+            className="absolute inset-0 overflow-auto p-4"
+          />
+        </div>
+        <Toolbar editor={editor as Editor} />
       </div>
-      <Toolbar editor={editor as Editor} />
     </div>
-  </div>
-
   );
 };
 

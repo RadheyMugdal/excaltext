@@ -1,11 +1,9 @@
-import { Ellipsis, Link2, Link2Icon, Pencil, Trash2 } from "lucide-react";
+import { Ellipsis, Link2, Pencil, Trash2 } from "lucide-react";
 import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";

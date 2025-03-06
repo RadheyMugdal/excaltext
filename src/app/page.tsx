@@ -2,10 +2,8 @@ import { Features } from "@/components/landing-page/Features";
 import { Footer } from "@/components/landing-page/Footer";
 import { Pricing } from "@/components/landing-page/Pricing";
 import { Button } from "@/components/ui/button";
-import { Brush, PenTool, Settings2, UsersRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const page = () => {
   return (

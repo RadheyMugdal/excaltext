@@ -2,7 +2,6 @@
 import {
   Tldraw,
   DefaultColorThemePalette,
-  Editor,
   createTLStore,
   loadSnapshot,
   throttle,
@@ -13,8 +12,7 @@ import { useLayoutEffect, useMemo, useState } from "react";
 
 DefaultColorThemePalette.lightMode.background = "aqua";
 
-export default function () {
-  const [editor, setEditor] = useState<Editor | null>(null);
+export default function TlDraw() {
   const store = useMemo(() => createTLStore(), []);
   const [loadingState, setLoadingState] = useState<
     | { status: "loading" }

@@ -12,15 +12,13 @@ import {
   Underline,
 } from "lucide-react";
 import { Editor } from "@tiptap/core";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import clsx from "clsx";
-import CustomDropdownMenu, { CustomDropdownContent, CustomDropDownMenuItem, CustomDropdownTrigger } from "./CustomDropdownMenu";
+import CustomDropdownMenu, {
+  CustomDropdownContent,
+  CustomDropDownMenuItem,
+  CustomDropdownTrigger,
+} from "./CustomDropdownMenu";
 
 interface ToolbarProps {
   editor: Editor;
@@ -29,39 +27,48 @@ interface ToolbarProps {
 const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
   return (
     <div className=" border-2 rounded-md h-11 absolute bottom-2 p-1 flex gap-2">
-
-        <CustomDropdownMenu>
-            <CustomDropdownTrigger>
-                <div className=" flex  items-center justify-center">
-                <ALargeSmall className=" w-6 h-6 m-auto " />
-                <ChevronDown className=" w-4" />
-                </div>
-            </CustomDropdownTrigger>
-            <CustomDropdownContent>
-                <CustomDropDownMenuItem className=" text-3xl font-bold " onClick={()=>{
-                    editor.chain().focus().setHeading({level:1}).run()
-                }}>
-                    Heading 1
-                </CustomDropDownMenuItem>
-                <CustomDropDownMenuItem className=" text-xl font-semibold" onClick={()=>{
-                    editor.chain().focus().setHeading({level:2}).run()
-                }}>
-                    Heading 2 
-                </CustomDropDownMenuItem>
-                <CustomDropDownMenuItem className=" text-lg font-medium" onClick={()=>{
-                    editor.chain().focus().setHeading({level:3}).run()
-                }}>
-                    Heading 3
-                </CustomDropDownMenuItem>
-                <CustomDropDownMenuItem className=" text-md font-normal"
-                    onClick={()=>{
-                        editor.chain().focus().setHeading({level:4}).run()
-                    }}
-                > 
-                    Heading 4
-                </CustomDropDownMenuItem>
-            </CustomDropdownContent>
-        </CustomDropdownMenu>
+      <CustomDropdownMenu>
+        <CustomDropdownTrigger>
+          <div className=" flex  items-center justify-center">
+            <ALargeSmall className=" w-6 h-6 m-auto " />
+            <ChevronDown className=" w-4" />
+          </div>
+        </CustomDropdownTrigger>
+        <CustomDropdownContent>
+          <CustomDropDownMenuItem
+            className=" text-3xl font-bold "
+            onClick={() => {
+              editor.chain().focus().setHeading({ level: 1 }).run();
+            }}
+          >
+            Heading 1
+          </CustomDropDownMenuItem>
+          <CustomDropDownMenuItem
+            className=" text-xl font-semibold"
+            onClick={() => {
+              editor.chain().focus().setHeading({ level: 2 }).run();
+            }}
+          >
+            Heading 2
+          </CustomDropDownMenuItem>
+          <CustomDropDownMenuItem
+            className=" text-lg font-medium"
+            onClick={() => {
+              editor.chain().focus().setHeading({ level: 3 }).run();
+            }}
+          >
+            Heading 3
+          </CustomDropDownMenuItem>
+          <CustomDropDownMenuItem
+            className=" text-md font-normal"
+            onClick={() => {
+              editor.chain().focus().setHeading({ level: 4 }).run();
+            }}
+          >
+            Heading 4
+          </CustomDropDownMenuItem>
+        </CustomDropdownContent>
+      </CustomDropdownMenu>
 
       <Separator orientation="vertical" className=" bg-foreground/40" />
       <div className=" flex gap-1">
@@ -95,31 +102,37 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
       </div>
       <Separator orientation="vertical" className=" bg-foreground/40" />
       <div className=" flex gap-1">
-      <CustomDropdownMenu>
-            <CustomDropdownTrigger>
+        <CustomDropdownMenu>
+          <CustomDropdownTrigger>
             <div className="  flex ">
               <List className=" w-6 h-5 m-auto " />
               <ChevronDown className=" w-4 my-auto " />
             </div>
-            </CustomDropdownTrigger>
-            <CustomDropdownContent>
-                <CustomDropDownMenuItem className=" " onClick={()=>{
-                    editor.chain().focus().toggleOrderedList().run()
-                }}>
-                    <div className=" flex items-center gap-2 justify-center">
-                   <ListOrdered className=" w-4 h-5" />
-                   Numbered list
-                    </div>
-                </CustomDropDownMenuItem>
-                <CustomDropDownMenuItem className=" " onClick={()=>{
-                    editor.chain().focus().toggleBulletList().run()
-                }}>
-                    <div className=" flex items-center gap-2 justify-center">
-                    <List className=" w-4 h-5" />
-                    Bullet list 
-                    </div>
-                </CustomDropDownMenuItem>
-            </CustomDropdownContent>
+          </CustomDropdownTrigger>
+          <CustomDropdownContent>
+            <CustomDropDownMenuItem
+              className=" "
+              onClick={() => {
+                editor.chain().focus().toggleOrderedList().run();
+              }}
+            >
+              <div className=" flex items-center gap-2 justify-center">
+                <ListOrdered className=" w-4 h-5" />
+                Numbered list
+              </div>
+            </CustomDropDownMenuItem>
+            <CustomDropDownMenuItem
+              className=" "
+              onClick={() => {
+                editor.chain().focus().toggleBulletList().run();
+              }}
+            >
+              <div className=" flex items-center gap-2 justify-center">
+                <List className=" w-4 h-5" />
+                Bullet list
+              </div>
+            </CustomDropDownMenuItem>
+          </CustomDropdownContent>
         </CustomDropdownMenu>
 
         <button
@@ -139,16 +152,14 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
           <LucideTextQuote className=" w-6 h-5 m-auto " />
         </button>
 
-
-          <button
-            className={clsx("h-full hover:bg-secondary p-1 rounded-md flex", {
-              " bg-secondary": editor?.isActive("blockquote"),
-            })}
-            onClick={() => editor?.chain().focus().setHorizontalRule().run()}
-          >
-            <Minus className=" w-6 h-5 m-auto " />
-          </button>
-
+        <button
+          className={clsx("h-full hover:bg-secondary p-1 rounded-md flex", {
+            " bg-secondary": editor?.isActive("blockquote"),
+          })}
+          onClick={() => editor?.chain().focus().setHorizontalRule().run()}
+        >
+          <Minus className=" w-6 h-5 m-auto " />
+        </button>
       </div>
     </div>
   );

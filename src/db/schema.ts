@@ -6,14 +6,7 @@ import {
   primaryKey,
   integer,
 } from "drizzle-orm/pg-core";
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
 import type { AdapterAccountType } from "next-auth/adapters";
-
-const sql = neon(process.env.DATABASE_URL!);
-
-export const db = drizzle({ client: sql });
-
 export const users = pgTable("user", {
   id: text("id")
     .primaryKey()
