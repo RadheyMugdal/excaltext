@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useCreateFile } from "@/hooks/files/useCreateFile";
+import { Loader2 } from "lucide-react";
 
 const CreateNewFileDialog = ({
   open,
@@ -15,6 +17,13 @@ const CreateNewFileDialog = ({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const [fileName, setFileName] = React.useState("");
+  const { mutateAsync, isPending } = useCreateFile();
+  const handleCreateFile = async () => {
+    await mutateAsync({ name: fileName });
+    setOpen(false);
+    setFileName("");
+  };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -26,9 +35,19 @@ const CreateNewFileDialog = ({
             <label htmlFor="" className=" text-xs">
               File name*
             </label>
-            <Input placeholder="Enter file name" />
+            <Input
+              placeholder="Enter file name"
+              value={fileName}
+              onChange={(e) => setFileName(e.target.value)}
+            />
           </div>
-          <Button>Create new file</Button>
+          <Button onClick={handleCreateFile} disabled={isPending}>
+            {isPending ? (
+              <Loader2 className=" w-4 h-4 animate-spin" />
+            ) : (
+              "Create new file"
+            )}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

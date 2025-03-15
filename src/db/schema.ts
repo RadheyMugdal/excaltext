@@ -1,3 +1,4 @@
+import { relations } from "drizzle-orm";
 import {
   boolean,
   timestamp,
@@ -5,6 +6,7 @@ import {
   text,
   primaryKey,
   integer,
+  json,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 export const users = pgTable("user", {
@@ -89,3 +91,25 @@ export const authenticators = pgTable(
     },
   ]
 );
+
+export const files = pgTable("files", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull(),
+  userId: text("userId").notNull(),
+  createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+  textEditorData: text("textEditorData"),
+  canvasData: json("canvasData"),
+});
+
+export const userRelations = relations(users, ({ many }) => ({
+  files: many(files),
+}));
+
+export const filesRelations = relations(files, ({ one }) => ({
+  users: one(users, {
+    fields: [files.userId],
+    references: [users.id],
+  }),
+}));

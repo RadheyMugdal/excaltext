@@ -22,6 +22,7 @@ interface ProjectCardProps {
   setRenameFileDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setDeleteFileDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   deleteFileDialogOpen: boolean;
+  setSelectedFile: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -30,6 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   lastUpdated,
   setRenameFileDialogOpen,
   setDeleteFileDialogOpen,
+  setSelectedFile,
 }) => {
   return (
     <Card className=" h-fit bg-secondary/50" id={id}>
@@ -51,11 +53,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => setRenameFileDialogOpen(true)}>
+              <DropdownMenuItem
+                onClick={() => {
+                  setSelectedFile(id);
+                  setRenameFileDialogOpen(true);
+                }}
+              >
                 <Pencil />
                 Rename file
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setDeleteFileDialogOpen(true)}>
+              <DropdownMenuItem
+                onClick={() => {
+                  setSelectedFile(id);
+                  setDeleteFileDialogOpen(true);
+                }}
+              >
                 <Trash2 />
                 Delete file
               </DropdownMenuItem>

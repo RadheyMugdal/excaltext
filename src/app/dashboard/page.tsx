@@ -3,7 +3,8 @@ import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import CreateNewFileDialog from "@/components/dashboard/dialogs/CreateNewFileDialog";
 import DeleteFileDialog from "@/components/dashboard/dialogs/DeleteFileDialog";
 import RenameFileDialog from "@/components/dashboard/dialogs/RenameFileDialog";
-import ProjectCard from "@/components/dashboard/ProjectCard";
+import ProjectList from "@/components/dashboard/ProjectList";
+import ProjectListSkeleton from "@/components/dashboard/skeletons/ProjectListSkeleton";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -21,13 +22,40 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { useGetFiles } from "@/hooks/files/useGetFiles";
 import { Search } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { match } from "ts-pattern";
 
 export default function Page() {
+  const page = useSearchParams().get("page");
+  const limit = "12";
+  const [fileName, setFileName] = useState<string>("");
   const [renameFileDialogOpen, setRenameFileDialogOpen] = useState(false);
   const [deleteFileDialogOpen, setDeleteFileDialogOpen] = useState(false);
   const [createNewFileDialogOpen, setCreateNewFileDialogOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<string>("");
+  const { data, status } = useGetFiles(page as string, limit, fileName);
+
+  const ProjectListView = match(status)
+    .with("success", () => (
+      <ProjectList
+        data={data}
+        setSelectedFile={setSelectedFile}
+        deleteFileDialogOpen={deleteFileDialogOpen}
+        renameFileDialogOpen={renameFileDialogOpen}
+        setDeleteFileDialogOpen={setDeleteFileDialogOpen}
+        setRenameFileDialogOpen={setRenameFileDialogOpen}
+        setCreateNewFileDialogOpen={setCreateNewFileDialogOpen}
+      />
+    ))
+    .with("pending", () => <ProjectListSkeleton />)
+    .with("error", () => (
+      <p className="text-red-500">Failed to load workspace data.</p>
+    ))
+    .exhaustive();
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -57,38 +85,23 @@ export default function Page() {
                 type="text"
                 placeholder="Search files "
                 className=" p-2 ml-6 w-[90%] bg-secondary border-none outline-none "
+                value={fileName}
+                onChange={(e) => setFileName(e.target.value)}
               />
             </div>
             <Button onClick={() => setCreateNewFileDialogOpen(true)}>
               Create new file
             </Button>
           </div>
-          {/* If There is no files show below component */}
-          {/* <CreateProject
-            setCreateNewFileDialogOpen={setCreateNewFileDialogOpen}
-          /> */}
-          {/* If files are loading show below skeleton */}
-          {/* <ProjectListSkeleton /> */}
-          <div className=" flex-1 flex flex-col">
-            <div className="  flex-1 py-6 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))]  gap-3 grid-rows-3 ">
-              <ProjectCard
-                id="1"
-                name="Untitled file"
-                lastUpdated="2 days ago"
-                renameFileDialogOpen={renameFileDialogOpen}
-                setRenameFileDialogOpen={setRenameFileDialogOpen}
-                setDeleteFileDialogOpen={setDeleteFileDialogOpen}
-                deleteFileDialogOpen={deleteFileDialogOpen}
-              />
-            </div>
-            <PaginationWithLinks page={1} totalCount={200} pageSize={10} />
-          </div>
+          {ProjectListView}
         </div>
         <RenameFileDialog
+          id={selectedFile}
           open={renameFileDialogOpen}
           setOpen={setRenameFileDialogOpen}
         />
         <DeleteFileDialog
+          id={selectedFile}
           open={deleteFileDialogOpen}
           setOpen={setDeleteFileDialogOpen}
         />

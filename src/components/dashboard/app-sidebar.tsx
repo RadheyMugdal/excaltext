@@ -1,13 +1,21 @@
 "use client";
+
 import * as React from "react";
 import {
   AudioWaveform,
+  BookOpen,
+  Bot,
   Command,
+  Frame,
   GalleryVerticalEnd,
+  Map,
+  PieChart,
+  Settings2,
   SquareTerminal,
 } from "lucide-react";
 
 import { NavMain } from "@/components/dashboard/nav-main";
+import { NavUser } from "@/components/dashboard/nav-user";
 import { TeamSwitcher } from "@/components/dashboard/team-switcher";
 import {
   Sidebar,
@@ -16,9 +24,6 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { Progress } from "../ui/progress";
-import { Button } from "../ui/button";
-import { NavUser } from "./nav-user";
 
 // This is sample data.
 const data = {
@@ -56,25 +61,12 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader className=" text-2xl font-bold">Excaltext</SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <div className=" w-full  rounded-md bg-secondary/50 border p-2 flex flex-col gap-3 ">
-          <h1 className=" font-bold">Free trail</h1>
-          <div className=" flex flex-col">
-            <Progress value={33} className="" />
-            <span className=" text-xs text-end mr-1">4/5 files</span>
-          </div>
-          <p className=" text-sm">
-            Upgrade your plan to create unlimited files
-          </p>
-          <Button>Upgrade now</Button>
-        </div>
         <NavUser />
       </SidebarFooter>
       <SidebarRail />

@@ -8,15 +8,23 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
+import { useDeleteFile } from "@/hooks/files/useDeleteFile";
 
 const DeleteFileDialog = ({
   open,
   setOpen,
+  id,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string;
 }) => {
+  const { mutateAsync, isPending } = useDeleteFile();
+  const handleDeleteFile = async () => {
+    await mutateAsync({ id });
+    setOpen(false);
+  };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -28,9 +36,19 @@ const DeleteFileDialog = ({
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant={"destructive"}>
-            <Trash2 />
-            Delete File
+          <Button
+            variant={"destructive"}
+            onClick={handleDeleteFile}
+            disabled={isPending}
+          >
+            {isPending ? (
+              <Loader2 className=" w-4 h-4 animate-spin" />
+            ) : (
+              <>
+                <Trash2 />
+                Delete File
+              </>
+            )}
           </Button>
         </DialogFooter>
       </DialogContent>
